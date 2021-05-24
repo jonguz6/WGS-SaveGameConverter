@@ -8,4 +8,18 @@ def hex_part_reverse(hex_part: str, split_length: int = 2) -> str:
 
 
 def hex_string_reverse(hex_string: str) -> str:
-    pass
+    hex_string = hex_string.replace(' ', '')
+    if len(hex_string) != 32:
+        raise ValueError("String is not the correct length")
+    int32 = hex_string[:8]
+    int16_1 = hex_string[8:12]
+    int16_2 = hex_string[12:16]
+    int16_3 = hex_string[16:20]
+    int32 = hex_part_reverse(int32)
+    int16_1 = hex_part_reverse(int16_1)
+    int16_2 = hex_part_reverse(int16_2)
+    int16_3 = hex_part_reverse(int16_3)
+
+    return int32 + int16_1 + int16_2 + int16_3 + hex_string[20:]
+
+
