@@ -24,7 +24,7 @@ def hex_string_reverse(hex_string: str) -> str:
 
 
 def filename_parser(data: str) -> dict:
-    data_array = data.split('''000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000''')
+    data_array = data.split('0' * 210)
     wgs_filename = data_array[1][:32]
     wgs_filename = hex_string_reverse(wgs_filename)
     steam_filename = bytes.fromhex(data_array[0]).decode().replace('\x00', '')
